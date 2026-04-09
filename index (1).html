@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Rangel Diniz — Consultoria Esportiva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Serif:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg:       #1E1E1E;
+    --bg2:      #161616;
+    --dark:     #404040;
+    --green:    #1B2A1B;
+    --brown:    #36281F;
+    --blue:     #0060B3;
+    --body:     #D6D6D6;
+    --cream:    #FFF5E4;
+    --white:    #FFFFFF;
+    --divider:  rgba(255,245,228,0.15);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--body);
+    font-family: 'Noto Serif', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── TYPOGRAPHY ─── */
+  .t-label {
+    font-family: 'Noto Serif', serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--cream);
+    border-bottom: 1px solid var(--cream);
+    display: inline-block;
+    padding-bottom: 3px;
+    margin-bottom: 20px;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    color: var(--white);
+    line-height: 0.92;
+    letter-spacing: 0.02em;
+  }
+
+  h1 { font-size: clamp(52px, 9vw, 110px); }
+  h2 { font-size: clamp(40px, 6vw, 78px); }
+  h3 { font-size: clamp(28px, 4vw, 48px); }
+
+  p { color: var(--body); }
+
+  em { color: var(--cream); font-style: italic; }
+  strong { color: var(--cream); font-weight: 600; }
+
+  hr.divider {
+    border: none;
+    border-top: 1px solid var(--divider);
+    margin: 0;
+  }
+
+  /* ─── LAYOUT ─── */
+  section { position: relative; overflow: hidden; }
+  .container { max-width: 1060px; margin: 0 auto; padding: 0 32px; }
+
+  /* ─── NOISE OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* ─── NAVBAR ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 20px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: linear-gradient(to bottom, rgba(30,30,30,0.95) 0%, transparent 100%);
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: var(--white);
+    letter-spacing: 0.08em;
+  }
+  .nav-logo span { color: var(--cream); }
+  .nav-cta {
+    font-family: 'Noto Serif', serif;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cream);
+    text-decoration: none;
+    border: 1px solid var(--cream);
+    padding: 9px 22px;
+    transition: background 0.25s, color 0.25s;
+  }
+  .nav-cta:hover { background: var(--cream); color: var(--bg); }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding-bottom: 80px;
+    background: linear-gradient(to top, #1E1E1E 0%, rgba(30,30,30,0.55) 55%, rgba(30,30,30,0.18) 100%), linear-gradient(to right, #1E1E1E 0%, transparent 60%), url('https://cdn.jsdelivr.net/gh/rangeldiniz/rangel-lp@main/Foto_slide_1.png') center/cover no-repeat;
+  }
+  .hero-inner { padding-top: 120px; }
+  .hero-eyebrow {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 28px;
+  }
+  .hero-eyebrow .line { width: 40px; height: 1px; background: var(--cream); }
+  .hero-eyebrow span {
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cream);
+  }
+  #hero h1 { max-width: 820px; margin-bottom: 28px; }
+  #hero h1 em { color: var(--cream); font-style: normal; }
+  .hero-sub {
+    font-size: 17px;
+    max-width: 480px;
+    color: var(--body);
+    margin-bottom: 48px;
+  }
+  .hero-sub em { color: var(--cream); }
+  .btn-primary {
+    display: inline-block;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 17px;
+    letter-spacing: 0.14em;
+    color: var(--bg);
+    background: var(--cream);
+    padding: 16px 44px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    position: relative;
+  }
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border: 1px solid var(--cream);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .btn-primary:hover { background: var(--white); transform: translateY(-2px); }
+  .btn-primary:hover::after { opacity: 1; }
+
+  .hero-stats {
+    display: flex; gap: 48px;
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid var(--divider);
+  }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    color: var(--cream);
+    line-height: 1;
+  }
+  .stat-label { font-size: 12px; color: var(--body); margin-top: 4px; }
+
+  /* ─── PROBLEM ─── */
+  #problem {
+    padding: 120px 0;
+    background: var(--bg2);
+  }
+  .problem-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin-top: 60px;
+    border: 1px solid var(--divider);
+  }
+  .problem-item {
+    padding: 40px 44px;
+    border-right: 1px solid var(--divider);
+    border-bottom: 1px solid var(--divider);
+    transition: background 0.3s;
+  }
+  .problem-item:nth-child(even) { border-right: none; }
+  .problem-item:nth-last-child(-n+2) { border-bottom: none; }
+  .problem-item:hover { background: rgba(255,245,228,0.03); }
+  .problem-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    color: var(--cream);
+    letter-spacing: 0.12em;
+    margin-bottom: 14px;
+    opacity: 0.6;
+  }
+  .problem-item h3 {
+    font-size: 24px;
+    margin-bottom: 12px;
+    line-height: 1.1;
+  }
+  .problem-item p { font-size: 15px; color: var(--body); }
+
+  /* ─── POSITIONING ─── */
+  #positioning {
+    padding: 120px 0;
+    background: var(--bg);
+  }
+  .pos-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    margin-top: 60px;
+  }
+  .pos-text h2 { margin-bottom: 28px; }
+  .pos-text p { margin-bottom: 16px; font-size: 16px; }
+  .pos-accent {
+    border-left: 2px solid var(--cream);
+    padding: 20px 28px;
+    margin: 36px 0;
+    background: rgba(255,245,228,0.04);
+  }
+  .pos-accent p { font-size: 18px; font-style: italic; color: var(--cream); }
+  .pos-img {
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+  }
+  .pos-img img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: brightness(0.75) contrast(1.1);
+  }
+  .pos-img::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, var(--bg) 0%, transparent 50%);
+  }
+  .credential-strip {
+    position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
+    padding: 24px 28px;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .cred-item {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .cred-dot { width: 6px; height: 6px; background: var(--cream); flex-shrink: 0; }
+  .cred-text {
+    font-size: 13px;
+    color: var(--cream);
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.1em;
+  }
+
+  /* ─── METHOD ─── */
+  #method {
+    padding: 120px 0;
+    background: var(--bg2);
+  }
+  .method-intro {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; margin-bottom: 80px; align-items: end;
+  }
+  .method-intro h2 { grid-column: 1; }
+  .method-intro p { font-size: 16px; align-self: end; }
+  .method-steps {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+    background: var(--divider);
+    border: 1px solid var(--divider);
+  }
+  .step {
+    background: var(--bg2);
+    padding: 44px 36px;
+    transition: background 0.3s;
+  }
+  .step:hover { background: rgba(255,245,228,0.03); }
+  .step-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px;
+    color: var(--cream);
+    opacity: 0.15;
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+  .step h3 { font-size: 22px; margin-bottom: 12px; }
+  .step p { font-size: 14px; color: var(--body); }
+
+  /* ─── FOR WHO ─── */
+  #forwho {
+    padding: 120px 0;
+    background: var(--bg);
+  }
+  .forwho-layout {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-top: 60px;
+  }
+  .check-list { display: flex; flex-direction: column; gap: 20px; }
+  .check-item {
+    display: flex; align-items: flex-start; gap: 16px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--divider);
+  }
+  .check-item:last-child { border-bottom: none; }
+  .check-icon {
+    width: 22px; height: 22px; flex-shrink: 0;
+    border: 1px solid var(--cream);
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 2px;
+  }
+  .check-icon svg { width: 11px; height: 11px; }
+  .check-item p { font-size: 16px; }
+  .x-list { display: flex; flex-direction: column; gap: 20px; }
+  .x-item {
+    display: flex; align-items: flex-start; gap: 16px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--divider);
+    opacity: 0.55;
+  }
+  .x-item:last-child { border-bottom: none; }
+  .x-icon {
+    width: 22px; height: 22px; flex-shrink: 0;
+    border: 1px solid #555;
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 2px;
+    color: #666; font-size: 14px;
+  }
+
+  /* ─── RESULTS ─── */
+  #results {
+    padding: 120px 0;
+    background: var(--bg2);
+  }
+  .results-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 64px; align-items: end; }
+  .awards-strip {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 1px;
+    background: var(--divider);
+    border: 1px solid var(--divider);
+    margin-bottom: 64px;
+  }
+  .award-item {
+    background: var(--bg2);
+    padding: 36px 32px;
+  }
+  .award-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 15px;
+    color: var(--cream);
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+  }
+  .award-desc { font-size: 13px; color: var(--body); }
+
+  .testimonials { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; }
+  .testimonial {
+    background: rgba(255,245,228,0.03);
+    border: 1px solid var(--divider);
+    padding: 32px 28px;
+    position: relative;
+  }
+  .testimonial::before {
+    content: '"';
+    font-family: 'Noto Serif', serif;
+    font-size: 80px;
+    color: var(--cream);
+    opacity: 0.12;
+    position: absolute;
+    top: 10px; left: 20px;
+    line-height: 1;
+  }
+  .testimonial p { font-size: 15px; font-style: italic; color: var(--body); margin-bottom: 20px; }
+  .testimonial-author {
+    display: flex; align-items: center; gap: 12px;
+    border-top: 1px solid var(--divider);
+    padding-top: 16px;
+  }
+  .author-dot { width: 8px; height: 8px; background: var(--cream); }
+  .author-name { font-size: 13px; color: var(--cream); font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.08em; }
+
+  /* ─── OFFER ─── */
+  #offer {
+    padding: 120px 0;
+    background: var(--bg);
+  }
+  .offer-box {
+    border: 1px solid var(--cream);
+    padding: 72px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .offer-box::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(255,245,228,0.06) 0%, transparent 70%);
+  }
+  .offer-box::after {
+    content: '';
+    position: absolute; bottom: 0; right: 0;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(0,96,179,0.08) 0%, transparent 70%);
+  }
+  .offer-inner { position: relative; z-index: 1; }
+  .offer-box h2 { margin-bottom: 28px; max-width: 700px; }
+  .offer-box p { font-size: 17px; max-width: 560px; margin-bottom: 44px; }
+  .offer-includes {
+    display: grid; grid-template-columns: repeat(2,1fr); gap: 16px 48px;
+    margin-bottom: 48px;
+  }
+  .offer-item {
+    display: flex; gap: 12px; align-items: flex-start;
+    font-size: 15px;
+  }
+  .offer-item::before {
+    content: '—';
+    color: var(--cream);
+    flex-shrink: 0;
+  }
+  .btn-whatsapp {
+    display: inline-flex; align-items: center; gap: 14px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.14em;
+    color: var(--bg);
+    background: var(--cream);
+    padding: 18px 52px;
+    text-decoration: none;
+    transition: all 0.25s;
+    position: relative;
+  }
+  .btn-whatsapp::after {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    border: 1px solid var(--cream);
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+  .btn-whatsapp:hover { background: var(--white); transform: translateY(-2px); }
+  .btn-whatsapp:hover::after { opacity: 1; }
+  .btn-whatsapp svg { width: 20px; height: 20px; }
+  .offer-note { font-size: 13px; color: #888; margin-top: 20px; font-style: italic; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--bg2);
+    padding: 40px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid var(--divider);
+  }
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    color: var(--white);
+    letter-spacing: 0.08em;
+  }
+  .footer-logo span { color: var(--cream); }
+  footer p { font-size: 13px; color: #666; }
+
+  /* ─── ANIMATIONS ─── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 860px) {
+    h1 { font-size: clamp(44px, 11vw, 80px); }
+    h2 { font-size: clamp(34px, 8vw, 60px); }
+    .pos-layout, .method-intro, .forwho-layout, .results-intro { grid-template-columns: 1fr; gap: 40px; }
+    .problem-grid { grid-template-columns: 1fr; }
+    .problem-item { border-right: none !important; }
+    .method-steps { grid-template-columns: 1fr 1fr; }
+    .testimonials { grid-template-columns: 1fr; }
+    .awards-strip { grid-template-columns: 1fr; }
+    .offer-box { padding: 44px 28px; }
+    .offer-includes { grid-template-columns: 1fr; }
+    .hero-stats { gap: 28px; flex-wrap: wrap; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+    nav { padding: 16px 20px; }
+    .pos-img { display: none; }
+  }
+
+  .trophy-gallery {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 12px;
+    margin-bottom: 48px;
+  }
+  .trophy-img { position: relative; overflow: hidden; aspect-ratio: 3/4; }
+  .trophy-img img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: brightness(0.85) contrast(1.05);
+    transition: transform 0.5s ease;
+  }
+  .trophy-img:hover img { transform: scale(1.03); }
+  .trophy-img::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(30,30,30,0.85) 0%, transparent 55%);
+  }
+  .trophy-caption {
+    position: absolute; bottom: 16px; left: 16px; z-index: 2;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px; letter-spacing: 0.1em;
+    color: var(--cream);
+  }
+  @media(max-width:860px){ .trophy-gallery{ grid-template-columns:1fr; } }
+
+
+  .trophy-gallery { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 48px; }
+  .trophy-img { position: relative; overflow: hidden; aspect-ratio: 3/4; }
+  .trophy-img img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.85) contrast(1.05); transition: transform 0.5s ease; }
+  .trophy-img:hover img { transform: scale(1.03); }
+  .trophy-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(30,30,30,0.85) 0%, transparent 55%); }
+  .trophy-caption { position: absolute; bottom: 16px; left: 16px; z-index: 2; font-family: 'Bebas Neue', sans-serif; font-size: 14px; letter-spacing: 0.1em; color: var(--cream); }
+  @media(max-width:860px){ .trophy-gallery{ grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Rangel<span>Diniz</span></div>
+  <a href="#offer" class="nav-cta">Quero minha vaga</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container hero-inner">
+    <div class="hero-eyebrow">
+      <div class="line"></div>
+      <span>Consultoria Esportiva Online</span>
+    </div>
+    <h1>Treino <em>sério.</em><br>Resultado<br>real.</h1>
+    <p class="hero-sub">
+      Para quem busca <em>estética de verdade</em> — não dieta genérica, não ficha pronta, não treinador que some.
+    </p>
+    <a href="#offer" class="btn-primary">Quero minha consultoria</a>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">TOP 5</div>
+        <div class="stat-label">Treinadores do Sul · INBA</div>
+      </div>
+      <div>
+        <div class="stat-num">TOP</div>
+        <div class="stat-label">Coach · Campeonato Joinville 2025</div>
+      </div>
+      <div>
+        <div class="stat-num">PRO</div>
+        <div class="stat-label">Card · NPC Muscle Contest Curitiba</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="container">
+    <div class="fade-up">
+      <span class="t-label">O mercado que você conhece</span>
+      <h2>O mercado está<br>infestado de<br>superficialidade.</h2>
+    </div>
+    <div class="problem-grid fade-up">
+      <div class="problem-item">
+        <div class="problem-num">01</div>
+        <h3>Treinos rasos</h3>
+        <p>Fichas genéricas copiadas da internet, entregues sem critério e trocadas só para "mostrar serviço".</p>
+      </div>
+      <div class="problem-item">
+        <div class="problem-num">02</div>
+        <h3>Dietas sem lógica</h3>
+        <p>Restrições extremas que ignoram sua rotina, seu metabolismo e seu objetivo real.</p>
+      </div>
+      <div class="problem-item">
+        <div class="problem-num">03</div>
+        <h3>Profissionais ausentes</h3>
+        <p>Você paga, segue, evolui — e quando tem dúvida, o treinador não responde. Ou pior: nem percebe.</p>
+      </div>
+      <div class="problem-item">
+        <div class="problem-num">04</div>
+        <h3>Resultados que não aparecem</h3>
+        <p>Meses de treino sem mudança visível. Porque intensidade sem método é só esforço desperdiçado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- POSITIONING -->
+<section id="positioning">
+  <div class="container">
+    <div class="pos-layout">
+      <div class="pos-text fade-up">
+        <span class="t-label">Quem é Rangel Diniz</span>
+        <h2>Precisão não é<br>negociável.</h2>
+        <p>Fui do Direito ao mercado financeiro. Tive empresas. Percebi cedo que trabalhar sem propósito é o caminho mais rápido para a mediocridade.</p>
+        <p>Escolhi a Educação Física e a nutrição porque não aceito entregar menos do que uma transformação real e palpável. Cada aluno meu tem treino, nutrição e acompanhamento calculados <em>individualmente</em>.</p>
+        <div class="pos-accent">
+          <p>"Intensidade é o remédio. Volume é a dose. Eu sei exatamente qual é a sua."</p>
+        </div>
+        <p>Não trabalho com volume de alunos. Trabalho com qualidade e entrega de resultado.</p>
+      </div>
+      <div class="pos-img fade-up">
+        <img src="https://cdn.jsdelivr.net/gh/rangeldiniz/rangel-lp@main/WhatsApp_Image_2026-03-30_at_22_28_31.jpeg" alt="Treinamento"/>
+        <div class="credential-strip">
+          <div class="cred-item">
+            <div class="cred-dot"></div>
+            <div class="cred-text">Top Coach — Campeonato Joinville 2025</div>
+          </div>
+          <div class="cred-item">
+            <div class="cred-dot"></div>
+            <div class="cred-text">Top 5 Treinadores do Sul · INBA</div>
+          </div>
+          <div class="cred-item">
+            <div class="cred-dot"></div>
+            <div class="cred-text">Pro Card — NPC Muscle Contest Curitiba</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- METHOD -->
+<section id="method">
+  <div class="container">
+    <div class="method-intro fade-up">
+      <div>
+        <span class="t-label">Método próprio</span>
+        <h2>Como funciona<br>na prática.</h2>
+      </div>
+      <p>Um método construído ao longo de anos de prática real — não é apenas a teoria da faculdade. Cada variável do seu microciclo é calculada individualmente. Sem atalhos. Sem fórmula mágica.</p>
+    </div>
+    <div class="method-steps fade-up">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Anamnese profunda</h3>
+        <p>Histórico de treino, limitações físicas, rotina real e objetivo específico. Sem isso, qualquer prescrição é chute.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Prescrição individual</h3>
+        <p>Treino e dieta feitos do zero para o seu corpo, sua limitação e seu tempo disponível. Nada de treino pronto.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Acompanhamento ativo</h3>
+        <p>Monitoramento da evolução, ajustes constantes e suporte direto — sem desaparecer no WhatsApp.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3>Ajuste de microciclo</h3>
+        <p>Intensidade, volume e periodização revisados conforme resposta real do seu corpo. Precisão acima de tudo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- FOR WHO -->
+<section id="forwho">
+  <div class="container">
+    <div class="fade-up">
+      <span class="t-label">Esse acompanhamento é pra você?</span>
+      <h2>Para quem não<br>aceita resultado<br>mediano.</h2>
+    </div>
+    <div class="forwho-layout fade-up">
+      <div>
+        <h3 style="font-size:18px;margin-bottom:28px;color:var(--cream);">Você está no lugar certo se:</h3>
+        <div class="check-list">
+          <div class="check-item">
+            <div class="check-icon">
+              <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 6L4.5 9.5L11 2" stroke="#FFF5E4" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <p>Busca <em>estética real</em> — volume, definição, shape atlético visível</p>
+          </div>
+          <div class="check-item">
+            <div class="check-icon">
+              <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 6L4.5 9.5L11 2" stroke="#FFF5E4" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <p>É ou quer se tornar <em>atleta natural</em> de fisiculturismo</p>
+          </div>
+          <div class="check-item">
+            <div class="check-icon">
+              <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 6L4.5 9.5L11 2" stroke="#FFF5E4" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <p>É atleta <em>Bikini ou Wellness</em> que almeja estar na elite</p>
+          </div>
+          <div class="check-item">
+            <div class="check-icon">
+              <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 6L4.5 9.5L11 2" stroke="#FFF5E4" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <p>Entende que <em>disciplina e método</em> são insubstituíveis — sem atalhos</p>
+          </div>
+          <div class="check-item">
+            <div class="check-icon">
+              <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 6L4.5 9.5L11 2" stroke="#FFF5E4" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <p>Sabe que <em>shape abre portas</em> — profissionalmente e pessoalmente</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-size:18px;margin-bottom:28px;color:#666;">Não é pra você se:</h3>
+        <div class="x-list">
+          <div class="x-item">
+            <div class="x-icon">×</div>
+            <p>Você quer resultados sem comprometimento com o processo</p>
+          </div>
+          <div class="x-item">
+            <div class="x-icon">×</div>
+            <p>Está buscando o treinador mais barato disponível</p>
+          </div>
+          <div class="x-item">
+            <div class="x-icon">×</div>
+            <p>Espera treino de academia genérico com ficha pronta</p>
+          </div>
+          <div class="x-item">
+            <div class="x-icon">×</div>
+            <p>Não tem disposição para seguir protocolo com consistência</p>
+          </div>
+          <div class="x-item">
+            <div class="x-icon">×</div>
+            <p>Prefere desculpas a evolução real</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- RESULTS -->
+<section id="results">
+  <div class="container">
+    <div class="results-intro fade-up">
+      <div>
+        <span class="t-label">Resultados</span>
+        <h2>Resultados que<br>falam por si.</h2>
+      </div>
+      <p>Não é promessa. É histórico. Cada conquista abaixo é fruto do mesmo método aplicado individualmente na consultoria.</p>
+    </div>
+
+    <div class="awards-strip fade-up">
+      <div class="award-item">
+        <div class="award-label">Top Coach</div>
+        <div class="award-desc">Campeonato Joinville 2025</div>
+      </div>
+      <div class="award-item">
+        <div class="award-label">Top 5 Treinadores do Sul</div>
+        <div class="award-desc">INBA · Federação Internacional</div>
+      </div>
+      <div class="award-item">
+        <div class="award-label">Pro Card</div>
+        <div class="award-desc">NPC Muscle Contest Curitiba</div>
+      </div>
+    </div>
+
+    
+    <div class="trophy-gallery fade-up">
+      <div class="trophy-img">
+        <img alt="Top Coach Joinville 2025" src="https://cdn.jsdelivr.net/gh/rangeldiniz/rangel-lp@main/WhatsApp_Image_2026-03-30_at_21_49_32.jpeg"/>
+        <div class="trophy-caption">Top Coach · Joinville 2025</div>
+      </div>
+      <div class="trophy-img">
+        <img alt="Pro Card NPC" src="https://cdn.jsdelivr.net/gh/rangeldiniz/rangel-lp@main/WhatsApp_Image_2026-03-30_at_21_49_33.jpeg"/>
+        <div class="trophy-caption">Pro Card · NPC Muscle Contest</div>
+      </div>
+      <div class="trophy-img">
+        <img alt="Rangel Diniz treinando" src="https://cdn.jsdelivr.net/gh/rangeldiniz/rangel-lp@main/WhatsApp_Image_2026-03-30_at_22_28_31.jpeg"/>
+        <div class="trophy-caption">O método na prática</div>
+      </div>
+    </div>
+
+    <div class="trophy-gallery fade-up">
+      <div class="trophy-img"><img src="https://cdn.jsdelivr.net/gh/rangeldiniz/rangel-lp@main/WhatsApp_Image_2026-03-30_at_20_23_51__1_.jpeg" alt="Top Coach Joinville 2025"/><div class="trophy-caption">Top Coach · Joinville 2025</div></div>
+      <div class="trophy-img"><img src="https://cdn.jsdelivr.net/gh/rangeldiniz/rangel-lp@main/WhatsApp_Image_2026-03-30_at_21_49_32.jpeg" alt="Pro Card NPC"/><div class="trophy-caption">Pro Card · NPC Muscle Contest</div></div>
+      <div class="trophy-img"><img src="https://cdn.jsdelivr.net/gh/rangeldiniz/rangel-lp@main/WhatsApp_Image_2026-03-30_at_21_49_33.jpeg" alt="Treino"/><div class="trophy-caption">O método na prática</div></div>
+    </div>
+    <div class="testimonials fade-up">
+      <div class="testimonial">
+        <p>"Cheguei sem acreditar que poderia ir tão longe. Em poucos meses de consultoria, subi no palco e ganhei na minha categoria. O Rangel não deixou nada sem ajuste."</p>
+        <div class="testimonial-author">
+          <div class="author-dot"></div>
+          <div class="author-name">Matheus Buzatti · Atleta Natural - Classic Physique</div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <p>"Tinha treinado por anos sem progressão visual real. Em 3 meses de acompanhamento, entendi o que é treino com método. A diferença é absurda."</p>
+        <div class="testimonial-author">
+          <div class="author-dot"></div>
+          <div class="author-name">Matheus Salomão · Hipertrofia Estética</div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <p>"O que mais me impressiona é o nível de personalização. Cada ajuste é pensado pra minha rotina. Nunca tive um treinador que entendesse tanto do meu processo."</p>
+        <div class="testimonial-author">
+          <div class="author-dot"></div>
+          <div class="author-name">Fernanda · Bikini Fitness</div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <p>"Escolhi treinar com o Rangel logo para minha estreia no fisiculturismo, em 4 meses, saímos de um físico de marombeira para um físico de competição. Agora vamos brigar por campeonatos grandes."</p>
+        <div class="testimonial-author">
+          <div class="author-dot"></div>
+          <div class="author-name">Marcella · Wellness</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- OFFER / CTA -->
+<section id="offer">
+  <div class="container" style="padding: 120px 32px;">
+    <div class="offer-box fade-up">
+      <div class="offer-inner">
+        <span class="t-label">Consultoria Online · Vagas Limitadas</span>
+        <h2>Seu físico reflete<br>a sua mentalidade.</h2>
+        <p>Se você chegou até aqui, já sabe que quer mais do que treino raso. A consultoria tem vagas limitadas — porque entrego profundidade, não quantidade.</p>
+
+        <div class="offer-includes">
+          <div class="offer-item">Treino individual 100% personalizado</div>
+          <div class="offer-item">Dieta ajustada à sua rotina real</div>
+          <div class="offer-item">Acompanhamento semanal ativo</div>
+          <div class="offer-item">Ajuste de microciclo contínuo</div>
+          <div class="offer-item">Suporte direto via WhatsApp</div>
+          <div class="offer-item">Protocolo para atletas e estética</div>
+        </div>
+
+        <a href="https://wa.me/5531986218245?text=Ol%C3%A1%2C+Rangel%21+Vim+pelo+site+e+quero+saber+mais+sobre+a+consultoria." class="btn-whatsapp" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          Falar diretamente no WhatsApp
+        </a>
+        <p class="offer-note">* Você será direcionado para uma conversa no WhatsApp. As vagas são avaliadas individualmente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Rangel<span>Diniz</span></div>
+  <p>@rangel.diniz · Consultoria Esportiva Online</p>
+  <p style="font-size:12px;color:#555;">© 2026 Rangel Diniz · Todos os direitos reservados</p>
+</footer>
+
+<script>
+  // Intersection observer for fade-up
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
